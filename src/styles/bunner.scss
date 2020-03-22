@@ -1,0 +1,21 @@
+.bunner {
+  background: url('/images/covid-19_1.webp');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  padding-top: 50px;
+  padding-bottom: 50px;
+
+  &__title {
+    color: white;
+    text-transform: uppercase;
+  }
+
+  .info-cards-wrap {
+    margin-top: 50px;
+
+    .v-card {
+      background-color: rgba(#fff, .6);
+    }
+  }
+}
