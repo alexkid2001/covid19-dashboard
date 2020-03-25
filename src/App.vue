@@ -43,18 +43,19 @@
             <h2>Location Information</h2>
         </v-row>
         <v-row justify="center">
-          <h2 v-if="localData.country">
-            {{ localData.country }} - {{ countries[localData.country] }}
-          </h2>
+          <!-- <h2 v-if="localData.country">
+            {{ localData.country }} - {{ countries.name }}
+          </h2> -->
         </v-row>
         <v-row justify="center">
           <v-col lg="5">
             <v-select
               v-model="localData.country"
-              :items="countriesList"
+              :items="countries"
               item-text="name"
+              item-value="iso3"
               label="Select countries"
-              @change="getCountryData(countries[localData.country])"
+              @change="getCountryData(localData.country)"
             ></v-select>
           </v-col>
         </v-row>
@@ -173,7 +174,6 @@ export default {
         this.dailyArrayData.reportDateString[i] = el.reportDateString;
         this.dailyArrayData.deltaConfirmed[i] = el.deltaConfirmed;
         this.dailyArrayData.deltaRecovered[i] = el.deltaRecovered;
-        this.dailyArrayData.reportDateString[i] = el.reportDateString;
       });
 
       this.chartData.labels = this.dailyArrayData.reportDateString;
@@ -213,8 +213,13 @@ export default {
       axios.get(`${baseURL}/countries`)
         .then((resp) => {
           this.countries = resp.data.countries;
-          this.countriesList = Object.keys(this.countries);
-          this.countriesCode = Object.values(this.countries);
+          console.log(this.countries);
+          // resp.data.forEach((el, i) => {
+          //     this.countriesList[i] = resp.data.countries[i];
+          //     this.topChartData.datasets[0].data[i] = resp.data[i].confirmed;
+          // });
+          // this.countriesList = Object.keys(this.countries);
+          // this.countriesCode = Object.values(this.countries);
         })
         .catch((err) => console.log(err));
     },
