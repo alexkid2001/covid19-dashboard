@@ -171,7 +171,7 @@ export default {
         this.dailyArrayData.totalRecovered[i] = el.totalRecovered;
         this.dailyArrayData.mainlandChina[i] = el.mainlandChina;
         this.dailyArrayData.otherLocations[i] = el.otherLocations;
-        this.dailyArrayData.reportDateString[i] = el.reportDateString;
+        this.dailyArrayData.reportDateString[i] = el.reportDate;
         this.dailyArrayData.deltaConfirmed[i] = el.deltaConfirmed;
         this.dailyArrayData.deltaRecovered[i] = el.deltaRecovered;
       });
